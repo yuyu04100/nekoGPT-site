@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -144,8 +144,12 @@
       updateLang(sel.value);
     });
     function updateLang(lang) {
-      document.querySelectorAll('[lang]').forEach(el => el.style.display = 'none');
+      document.querySelectorAll('[lang]').forEach(el => {
+        if (el.tagName === 'HTML' || el.tagName === 'BODY') return;
+        el.style.display = 'none';
+      });
       document.querySelectorAll(`[lang="${lang}"]`).forEach(el => el.style.display = '');
+      document.documentElement.lang = lang;
     }
   </script>
 </body>
