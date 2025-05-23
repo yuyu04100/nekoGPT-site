@@ -1,26 +1,68 @@
-<!DOCTYPE html>
-<html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>nekoGPT – 癒しのねこAI</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <!-- Google Fonts 読み込み -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Noto+Sans+JP&display=swap" rel="stylesheet">
   <style>
-    body{font-family:sans-serif;text-align:center;padding:3rem;}
-    .btn{padding:1rem 2rem;background:#ff8abd;color:#fff;border-radius:8px;text-decoration:none;}
-    footer{margin-top:2rem;font-size:.8rem;color:#666;}
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: linear-gradient(135deg, #ffe3f0, #ff8abd);
+      color: #333;
+      margin: 0; padding: 0;
+    }
+    header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; }
+    nav a { margin: 0 1rem; color: #555; text-decoration: none; font-weight: 600; }
+    .hero { text-align: center; padding: 4rem 2rem; }
+    .hero h1 { font-family: 'Poppins', sans-serif; font-size: 3rem; margin-bottom: .5rem; }
+    .btn {
+      display: inline-block;
+      background: #fff;
+      color: #ff6ba1;
+      padding: .8rem 2rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      transition: transform .2s;
+    }
+    .btn:hover { transform: scale(1.05) rotate(-2deg); }
+    section { padding: 4rem 2rem; }
+    footer {
+      background: #fff;
+      padding: 2rem; text-align: center;
+      font-size: .8rem; color: #999;
+    }
+    .social a { margin: 0 .5rem; color: #555; text-decoration: none; }
   </style>
 </head>
 <body>
-  <h1>🐾 nekoGPT</h1>
-  <p>猫好きたちの“癒し時間”をお届けする<br>パーソナルAIチャットボット</p>
-  <a class="btn" href="https://chat.openai.com/g/g-g-6826f4e2f11881918ef8f057128c755a-neko-gpt" target="_blank">
-    ねこGPTをはじめる
-  </a>
+  <header>
+    <div class="logo">🐾 nekoGPT</div>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#how">How It Works</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h1>癒しのねこAIバリスタ</h1>
+    <p>ふわふわ子猫がお届けする、心に一杯の癒し体験を。</p>
+    <a class="btn" href="https://chat.openai.com/…">ねこGPTをはじめる</a>
+  </div>
+
+  <section id="features">
+    <h2>Features</h2>
+    <div class="grid">
+      <!-- アイコン＋テキストで３列表示など -->
+    </div>
+  </section>
+
+  <!-- How It Works, Testimonials, Contact も同じ調子で -->
+
   <footer>
-    © 2025 nekoGPT&nbsp;|&nbsp;
-    <a href="#privacy">Privacy & Terms</a>
+    <div class="social">
+      <a href="#">🐱 TikTok</a>
+      <a href="#">🐦 Twitter</a>
+      <a href="#">📷 Instagram</a>
+    </div>
+    <p>© 2025 nekoGPT | <a href="#privacy">Privacy & Terms</a></p>
   </footer>
-  <h2 id="privacy">Privacy & Age Notice</h2>
-  <p>本サービスは13歳以上を対象としています。<br>個人情報は一切収集していません。</p>
 </body>
 </html>
