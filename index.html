@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,7 +13,11 @@
       --font-sans: 'Noto Sans JP', sans-serif;
       --font-heading: 'Poppins', sans-serif;
     }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
     body {
       font-family: var(--font-sans);
       background: linear-gradient(135deg, var(--color-accent), var(--color-primary));
@@ -40,9 +44,22 @@
       padding: 0.3rem;
       border-radius: 4px;
     }
-    /* Hide non-selected languages */
-    [lang] { display: none; }
-    [lang][data-lang="ja"] { display: block; }
+
+    /* ─── 言語切り替え用 ─── */
+    /* まず、data-lang 属性を持つ要素はすべて隠す */
+    [data-lang] {
+      display: none;
+    }
+    /* html[lang="ja"] のときだけ data-lang="ja" を表示 */
+    html[lang="ja"] [data-lang="ja"] {
+      display: block !important;
+    }
+    /* html[lang="en"] のときだけ data-lang="en" を表示 */
+    html[lang="en"] [data-lang="en"] {
+      display: block !important;
+    }
+    /* ──────────────────── */
+
     .hero {
       flex: 1;
       display: flex;
@@ -104,8 +121,8 @@
     <nav>
       <a href="#features" data-lang="ja">機能</a>
       <a href="#features" data-lang="en">Features</a>
-      <a href="#contact" data-lang="ja">お問い合わせ</a>
-      <a href="#contact" data-lang="en">Contact</a>
+      <a href="#contact"  data-lang="ja">お問い合わせ</a>
+      <a href="#contact"  data-lang="en">Contact</a>
     </nav>
     <div class="lang-switcher">
       <select id="lang-select">
@@ -126,17 +143,19 @@
       A fluffy kitten brewing a <span class="highlight">soul-warming cup</span> just for you! ♪
     </p>
 
-    <a class="btn" href="https://chat.openai.com/g/g-6826f4e2f11881918ef8f057128c755a-neko-gpt" target="_blank">
+    <a class="btn"
+       href="https://chat.openai.com/g/g-6826f4e2f11881918ef8f057128c755a-neko-gpt"
+       target="_blank">
       <span data-lang="ja">ねこGPTをはじめる</span>
       <span data-lang="en">Start nekoGPT</span>
     </a>
   </div>
 
   <section id="features">
-    <h2 data-lang="ja">Features</h2>
-    <h2 data-lang="en">機能</h2>
+    <h2 data-lang="ja">機能</h2>
+    <h2 data-lang="en">Features</h2>
     <div class="grid">
-      <!-- アイコン＋テキスト3列 -->
+      <!-- ここにアイコン＋テキストを３列などで入れる -->
     </div>
   </section>
 
@@ -153,23 +172,28 @@
       <a href="#" title="Twitter">🐦</a>
       <a href="#" title="Instagram">📷</a>
     </div>
-    <p><span data-lang="ja">© 2025 nekoGPT | <a href="#privacy">プライバシー & 利用規約</a></span><span data-lang="en">© 2025 nekoGPT | <a href="#privacy">Privacy & Terms</a></span></p>
+    <p>
+      <span data-lang="ja">© 2025 nekoGPT | <a href="#privacy">プライバシー & 利用規約</a></span>
+      <span data-lang="en">© 2025 nekoGPT | <a href="#privacy">Privacy & Terms</a></span>
+    </p>
   </footer>
 
   <script>
     const select = document.getElementById('lang-select');
+    // 保存された設定 or デフォルトは日本語
     const current = localStorage.getItem('lang') || 'ja';
     select.value = current;
     updateLang(current);
+
     select.addEventListener('change', () => {
       localStorage.setItem('lang', select.value);
       updateLang(select.value);
     });
+
     function updateLang(lang) {
-      document.querySelectorAll('[data-lang]').forEach(el => {
-        el.style.display = el.getAttribute('data-lang') === lang ? '' : 'none';
-      });
+      // <html lang="..."> を切り替え
       document.documentElement.lang = lang;
+      // data-lang 要素は CSS で表示／非表示される
     }
   </script>
 </body>
